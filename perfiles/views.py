@@ -8,13 +8,11 @@ def registro(request):
         form = CustomUserCreationForm(request.POST)
         if form.is_valid():
             user = form.save()
-            # Puedes agregar información adicional al usuario si es necesario
             user.first_name = form.cleaned_data['first_name']
             user.last_name = form.cleaned_data['last_name']
             user.save()
             # Iniciar sesión automáticamente después de registrarse
             login(request, user)
-            # Puedes mostrar un mensaje de éxito
             return redirect('mi_pagina')  # Redirigir a la página principal
     else:
         form = CustomUserCreationForm()
@@ -28,11 +26,11 @@ def iniciar_sesion(request):
         user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)
-            # El inicio de sesión fue exitoso, puedes mostrar un mensaje
+            # El inicio de sesión fue exitoso
             messages.success(request, 'Inicio de sesión exitoso')
             return redirect('mi_pagina')
         else:
-            # El inicio de sesión falló, puedes mostrar un mensaje de error
+            # El inicio de sesión falló
             messages.error(request, 'Inicio de sesión fallido. Verifica tus datos.')
 
     return render(request, 'inicio_sesion.html')
