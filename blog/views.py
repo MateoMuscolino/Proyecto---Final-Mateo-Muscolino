@@ -15,9 +15,10 @@ def agregar_opinion(request):
         opinion = request.POST['opinion']
         usuario = request.user
         Opinion.objects.create(libro=libro, opinion=opinion, usuario=usuario)
-        return redirect('registro')  # Redirige a la página de opiniones
+        return redirect('opiniones')  # Redirige a la página de opiniones
 
     return render(request, 'agregar_opinion.html')
+
 
 
 

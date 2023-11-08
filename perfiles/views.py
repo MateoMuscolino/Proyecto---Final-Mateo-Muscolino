@@ -1,8 +1,7 @@
 from django.shortcuts import render, redirect
-from .forms import CustomUserCreationForm
+from .forms import CustomUserCreationForm, EditarPerfilForm
 from django.contrib.auth import login,authenticate
 from django.contrib import messages
-from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 
 def registro(request):
@@ -55,3 +54,17 @@ def ver_perfil(request):
         return redirect('ver_perfil')
 
     return render(request, 'ver_perfil.html', {'usuario': usuario})
+
+@login_required
+def editar_perfil(request):
+    usuario = request.user
+
+    if request.method == 'POST':
+        form = EditarPerfilForm(request.POST, instance=usuario)
+        if form.is_valid():
+            form.save()
+            return redirect('ver_perfil')
+    else:
+        form = EditarPerfilForm(instance=usuario)
+
+    return render(request, 'editar_perfil.html', {'form': form})

@@ -7,6 +7,7 @@ class CustomUserCreationForm(UserCreationForm):
     first_name = forms.CharField(label="Nombre", max_length=30, required=True, help_text="Requerido. 30 caracteres como máximo.")
     last_name = forms.CharField(label="Apellido", max_length=30, required=True, help_text="Requerido. 30 caracteres como máximo.")
 
+class EditarPerfilForm(forms.ModelForm):
     class Meta:
         model = User
-        fields = ('username', 'first_name', 'last_name', 'password1', 'password2')
+        fields = ['username', 'first_name', 'last_name', 'email']
