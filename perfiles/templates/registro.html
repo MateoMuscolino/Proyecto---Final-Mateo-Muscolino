@@ -1,20 +1,35 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <h2>Registro</h2>
-  <form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Registrarse</button>
-  </form>
-  <p>¿Ya tienes una cuenta? <a href="{% url 'inicio_sesion' %}">Iniciar sesión</a></p>
-  <p>¿No tienes una cuenta? <a href="{% url 'registro' %}">Registrarse</a></p>
-  {% if messages %}
-<ul class="messages">
+
+<h2>Registro</h2>
+<form method="post">
+  {% csrf_token %}
+  <div class="form-field">
+    {{ form.username.label_tag }} {{ form.username }}
+  </div>
+  <div class="form-field">
+    {{ form.first_name.label_tag }} {{ form.first_name }}
+  </div>
+  <div class="form-field">
+    {{ form.last_name.label_tag }} {{ form.last_name }}
+  </div>
+  <div class="form-field">
+    {{ form.password1.label_tag }} {{ form.password1 }}
+  </div>
+  <div class="form-field">
+    {{ form.password2.label_tag }} {{ form.password2 }}
+  </div>
+  <button type="submit">Registrarse</button>
+</form>
+<p>¿Ya tienes una cuenta? <a href="{% url 'inicio_sesion' %}">Iniciar sesión</a></p>
+<p>¿No tienes una cuenta? <a href="{% url 'registro' %}">Registrarse</a></p>
+{% if messages %}
+  <ul class="messages">
     {% for message in messages %}
-    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+      <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
     {% endfor %}
-</ul>
+  </ul>
 {% endif %}
 
 {% endblock %}
