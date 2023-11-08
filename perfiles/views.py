@@ -11,6 +11,7 @@ def registro(request):
             user = form.save()
             user.first_name = form.cleaned_data['first_name']
             user.last_name = form.cleaned_data['last_name']
+            user.email = form.cleaned_data['email']  # Guarda el correo electrónico
             user.save()
             # Iniciar sesión automáticamente después de registrarse
             login(request, user)
