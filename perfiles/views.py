@@ -2,6 +2,8 @@ from django.shortcuts import render, redirect
 from .forms import CustomUserCreationForm
 from django.contrib.auth import login,authenticate
 from django.contrib import messages
+from django.contrib.auth.models import User
+from django.contrib.auth.decorators import login_required
 
 def registro(request):
     if request.method == 'POST':
@@ -39,3 +41,17 @@ def mi_pagina(request):
     return render(request, 'base.html')
 def sobre_mi(request):
     return render(request, 'sobre_mi.html')
+
+@login_required
+def ver_perfil(request):
+    usuario = request.user
+
+    if request.method == 'POST':
+        usuario.username = request.POST['username']
+        usuario.first_name = request.POST['first_name']
+        usuario.last_name = request.POST['last_name']
+        usuario.email = request.POST['email']
+        usuario.save()
+        return redirect('ver_perfil')
+
+    return render(request, 'ver_perfil.html', {'usuario': usuario})

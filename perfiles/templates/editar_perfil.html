@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h2>Editar Perfil</h2>
+  <form method="post">
+    {% csrf_token %}
+    <label for="username">Usuario:</label>
+    <input type="text" name="username" value="{{ usuario.username }}">
+    <label for="first_name">Nombre:</label>
+    <input type="text" name="first_name" value="{{ usuario.first_name }}">
+    <label for="last_name">Apellido:</label>
+    <input type="text" name="last_name" value="{{ usuario.last_name }}">
+    <label for="email">Correo electrónico:</label>
+    <input type="email" name="email" value="{{ usuario.email }}">
+    <button type="submit">Guardar</button>
+  </form>
+  <a href="{% url 'ver_perfil' %}">Volver al perfil</a>
+{% endblock %}
