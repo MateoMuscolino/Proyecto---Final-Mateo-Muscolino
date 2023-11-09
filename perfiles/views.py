@@ -3,6 +3,7 @@ from .forms import CustomUserCreationForm, EditarPerfilForm
 from django.contrib.auth import login,authenticate
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth import logout
 
 def registro(request):
     if request.method == 'POST':
@@ -69,3 +70,9 @@ def editar_perfil(request):
         form = EditarPerfilForm(instance=usuario)
 
     return render(request, 'editar_perfil.html', {'form': form})
+
+
+def cerrar_sesion(request):
+    logout(request)
+    # Redirige a la página de inicio después del cierre de sesión
+    return redirect('mi_pagina')

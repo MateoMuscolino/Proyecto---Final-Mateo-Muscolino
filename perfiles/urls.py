@@ -8,5 +8,6 @@ urlpatterns = [
     path('sobre-mi/', views.sobre_mi, name='sobre_mi'),
     path('ver-perfil/', views.ver_perfil, name='ver_perfil'),
     path('editar-perfil/', views.editar_perfil, name='editar_perfil'),
+    path('cerrar-sesion/', views.cerrar_sesion, name='cerrar_sesion'),
 ]
 
