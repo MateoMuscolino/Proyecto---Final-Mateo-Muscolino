@@ -8,8 +8,8 @@ def opiniones(request):
     return render(request, 'opiniones.html', {'opiniones': opiniones})
 
 
-@login_required
-def agregar_opinion(request):
+@login_required # Garantiza que solo los usuarios logeados permitan su uso
+def agregar_opinion(request): # Agrega nuevas opiniones
     if request.method == 'POST':
         libro = request.POST['libro']
         opinion = request.POST['opinion']
