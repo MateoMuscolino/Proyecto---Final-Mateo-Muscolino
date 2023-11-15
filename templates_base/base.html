@@ -37,6 +37,8 @@
                     {{ user.username }}
                     </button>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" href="{% url 'agregar_opinion' %}">Nueva Reseña</a>
+                        <a class="dropdown-item" href="{% url 'tus_opiniones' %}">Tus Reseñas</a>
                         <a class="dropdown-item" href="{% url 'ver_perfil' %}">Ver Perfil</a>
                         <a class="dropdown-item" href="{% url 'editar_perfil' %}">Editar Perfil</a>
                         <a class="dropdown-item" href="{% url 'cerrar_sesion' %}">Cerrar Sesión</a>

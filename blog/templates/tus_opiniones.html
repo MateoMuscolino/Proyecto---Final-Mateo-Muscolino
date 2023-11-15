@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h2>Tus Opiniones</h2>
+  <ul>
+    {% for opinion in opiniones_usuario %}
+      <li>
+        {{ opinion.libro }}<br>
+        {{ opinion.opinion }}<br>
+        Publicado el {{ opinion.fecha }}
+        <br>
+        <a href="{% url 'editar_opinion' opinion.id %}">Editar</a> |
+        <a href="{% url 'eliminar_opinion' opinion.id %}">Eliminar</a>
+      </li>
+    {% endfor %}
+  </ul>
+{% endblock %}
