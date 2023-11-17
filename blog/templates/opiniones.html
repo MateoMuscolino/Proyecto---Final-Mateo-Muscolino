@@ -17,10 +17,10 @@
     {% endfor %}
   </ul>
   {% if user.is_authenticated %}
-    <a href="{% url 'agregar_opinion' %}">Agregar Opinión</a>
+    <a href="{% url 'agregar_opinion' %}">Agregar Reseña</a>
     <br>
-    <a href="{% url 'tus_opiniones' %}">Tus Opiniones</a>
+    <a href="{% url 'tus_opiniones' %}">Tus Reseñas</a>
   {% else %}
-    <p>Para dejar una opinión, <a href="{% url 'inicio_sesion' %}">inicia sesión</a>.</p>
+    <p>Para dejar una reseña, <a href="{% url 'inicio_sesion' %}">inicia sesión</a>.</p>
   {% endif %}
 {% endblock %}
